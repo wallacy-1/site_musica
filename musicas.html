@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/musicas.css">
+    <title>Musica</title>
+</head>
+
+<body>
+    <main>
+        <section id="musica">
+            <nav id="nome-msc">
+            </nav>
+            <nav id="caixa-img">
+                <img id="img-musica" src="img/disco_girando.gif">
+            </nav>
+            <progress id="progressBar" value="0" max="100"></progress>
+            <!-- musica -->
+            <audio id="mysong" preload="metadata"></audio>
+            <nav id="opcoes-musica">
+                <a id="voltar-musica"><img id="img-bt-music" src="img/voltar.png" alt="voltar-musica"></a>
+                <a id="play-musica"><img id="img-bt-music" src="img/play.png" alt="continuar-musica"></a>
+                <a id="stop-musica"><img id="img-bt-music" src="img/pausar.png" alt="pausar-musica"></a>
+                <a id="avancar-musica"><img id="img-bt-music" src="img/avancar.png" alt="voltar"></a>
+            </nav>
+            <h3 id="opcao-adicional">Volume:
+                <input id="volume-barra" type="range" min="1" max="100" value="50">
+            </h3>
+            <h3 id="opcao-adicional">Loop uma musica:
+                <input type="checkbox" name="loop" id="loop">
+            </h3>
+            <div id="playlist">
+
+            </div>
+        </section>
+
+         <!-- colocar musica -->
+         <section id="colocar-musica">
+            <form id="form-msc" action="php/novamusica.php" method="POST" enctype="multipart/form-data">
+                <label for="msc-nome">Nome Musica</label>
+                <input type="text" name="msc-nome" id="msc-nome" required="required"><br><br>
+                <label for="msc-imagem">Imagem da musica</label>
+                <input type="file" name="msc-imagem" id="msc-imagem" required="required"> <br><br>
+                <label for="msc-audio">Audio em mp3:</label>
+                <input type="file" name="msc-audio" id="msc-audio" required="required"> <br><br>
+                <input type="submit" value="Adicionar">
+            </form>
+        </section>
+        <script src="js/music.js"></script>
+    </main>
+</body>
+
+</html>

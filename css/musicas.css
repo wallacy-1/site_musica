@@ -1,0 +1,187 @@
+body{
+    background-color: aquamarine;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+#musica{
+    width: 300px;
+    height: 91vh;
+}
+
+#titulo-msc{
+    margin: 0;
+    margin-left: 19vh;
+    margin-bottom: 4vh;
+    position: absolute;
+    font-size: larger;
+}
+
+#caixa-img{
+    margin: 4vh 0vh -1vh 6vh;
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+}
+
+#img-musica{
+    width: 100%;
+    height: 100%;
+}
+
+#opcoes-musica{
+    background-color: azure;
+    border-radius: 30px;
+    border: black;
+    border-style: solid;
+    text-align: center;
+    width: 70%;
+    margin-left: 6vh;
+    margin-bottom: 3vh;
+}
+
+
+#img-bt-music{
+    width: 50px;
+    margin-left: 1vh;
+}
+
+#progressBar{
+    margin-left: 6vh;
+    width: 36vh;
+    margin-top: -1.4vh;
+    margin-bottom: 2vh;
+
+}
+
+#opcao-adicional{
+    margin: 0;
+    margin-left: 2vh;
+}
+
+#stop-musica{
+    display: none;
+}
+
+#ordem-musica{
+    overflow-y: scroll;
+    height: 32vh;
+}
+
+#ordem-msc-filho{
+    margin-left: 2vh;
+    margin-bottom: 1vh;
+    width: 42vh;
+    height: 5vh;
+    background-color: cadetblue;
+    justify-content: space-between;
+    border: solid 3px;
+    display: flex;
+    border-radius: 8px;
+}
+
+#h1-ordem-msc{
+    margin-left: 2vh;
+    margin-top: 1vh;
+}
+
+#div-ordem-msc{
+    display: flex;
+    justify-content: end;
+}
+
+#bt-opcoes{
+    width: 10%;
+}
+
+#bt-cima{ 
+    width: 17%;
+    margin-right: 1%;
+}
+
+#bt-cima-primeira{
+    width: 14%;
+    margin-right: 3vh;
+}
+
+#bt-baixo{
+    width: 18%;
+    margin-right: 1%;
+}
+
+#bt-baixo-ultimo{
+    margin-right: 23%;
+    width: 21%;
+}
+
+#bt-excluir{
+    width: 15%;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+#bt-excluir-primeiro{
+    width: 12%;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+#bt-excluir-ultimo{
+    width: 20%;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+#seta-primeira{
+    margin-left: 3vh;
+    width: 100%;
+}
+
+#seta-1-0{ /* 1 e ultima opção */
+    width: 100%;
+}
+
+#colocar-musica{
+    display: flex;
+    width: 70%;
+    height: 25vh;
+    background-color: aquamarine;
+    border: black;
+    border-style: solid;
+    border-radius: 30px;
+    margin-left: 5vh;
+}
+
+#form-msc{
+    margin-top: 2vh;
+    margin-left: 4vh;
+}
+
+#form-url-msc{
+    margin-top: 2vh;
+    margin-left: 4h;
+}
+
+#toda-as-musicas{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 63%;
+    height: 35vh;
+    background-color: aquamarine;
+    border: black;
+    border-style: solid;
+    border-radius: 30px;
+    margin-left: 5vh;
+
+}
+
+#testeteste{
+    display: flex;
+    flex-direction: column;
+}
+
+.img{  /* img dos bt, bt excluir, bt cima e bt baixo */
+    width: 100%;
+}
