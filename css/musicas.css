@@ -1,28 +1,108 @@
-body{
-    background-color: aquamarine;
+*{
+    padding: 0;
+    margin: 0;
 }
-main{
+
+body{
+    background-color: gray;
     display: flex;
     justify-content: center;
+    height: 100vh;
 }
+
+.asides{
+    background: #675E5E;
+    width: 26%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: solid #252525;
+}
+
+.seta-aside{
+    width: 29px;
+    height: 44px;
+}
+
+.conteudo-aside{
+    width: 80%; /* 20% para a seta */
+    padding: 10px; 
+}
+
+.img{  /* img dos bt, bt excluir, bt cima e bt baixo */
+    width: 100%;
+}
+
+.progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 380px;
+    padding: 20px;
+    opacity: 0.7;
+  }
+  .progress-bar {
+    position: relative;
+    width: 70%;
+    height: 5px;
+    background-color: #eee;
+    vertical-align: 2px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .now {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 5px;
+    background: #000000;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .now::after { /* circulo da barra de progresso */ 
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: -40%;
+    
+    width: 9px;
+    height: 9px;
+
+    background-image: url(../img/circulo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+.progress:hover{
+    opacity: 1;
+}
+
+#caixa-main{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+
+    border-top: solid #252525;
+    border-bottom: solid #252525;
+}
+
 #musica{
     width: 300px;
     height: 91vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#titulo-msc{
-    margin: 0;
-    margin-left: 19vh;
-    margin-bottom: 4vh;
-    position: absolute;
-    font-size: larger;
+#nome-msc{
+    margin-top: 4%;
 }
 
 #caixa-img{
-    margin: 4vh 0vh -1vh 6vh;
-    height: 200px;
-    width: 200px;
-    display: inline-block;
+    height: 400px;
+    width: 400px;
+    margin-top: -13%; 
 }
 
 #img-musica{
@@ -31,14 +111,12 @@ main{
 }
 
 #opcoes-musica{
-    background-color: azure;
-    border-radius: 30px;
-    border: black;
-    border-style: solid;
-    text-align: center;
-    width: 70%;
-    margin-left: 6vh;
-    margin-bottom: 3vh;
+    margin-top: -41px;
+}
+
+
+#stop-musica{
+    display: none;
 }
 
 
@@ -47,141 +125,45 @@ main{
     margin-left: 1vh;
 }
 
-#progressBar{
-    margin-left: 6vh;
-    width: 36vh;
-    margin-top: -1.4vh;
-    margin-bottom: 2vh;
 
+#volume-barra{
+    -webkit-appearance: none;
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    background: #1d1c1c;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-bottom: 6%;
+}
+
+#volume-barra:hover{
+    opacity: 1;
+}
+
+#volume-barra::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 35px;
+    border: 0;
+    cursor: pointer;
+    background: url('../img/ponteiro.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#volume-barra::-moz-range-thumb {
+    width: 23px;
+    height: 24px;
+    border: 0;
+    background: url('../img/ponteiro.png');
+    cursor: pointer;
 }
 
 #opcao-adicional{
     margin: 0;
     margin-left: 2vh;
-}
-
-#stop-musica{
-    display: none;
-}
-
-#ordem-musica{
-    overflow-y: scroll;
-    height: 32vh;
-}
-
-#ordem-msc-filho{
-    margin-left: 2vh;
-    margin-bottom: 1vh;
-    width: 42vh;
-    height: 5vh;
-    background-color: cadetblue;
-    justify-content: space-between;
-    border: solid 3px;
-    display: flex;
-    border-radius: 8px;
-}
-
-#h1-ordem-msc{
-    margin-left: 2vh;
-    margin-top: 1vh;
-}
-
-#div-ordem-msc{
-    display: flex;
-    justify-content: end;
-}
-
-#bt-opcoes{
-    width: 10%;
-}
-
-#bt-cima{ 
-    width: 17%;
-    margin-right: 1%;
-}
-
-#bt-cima-primeira{
-    width: 14%;
-    margin-right: 3vh;
-}
-
-#bt-baixo{
-    width: 18%;
-    margin-right: 1%;
-}
-
-#bt-baixo-ultimo{
-    margin-right: 23%;
-    width: 21%;
-}
-
-#bt-excluir{
-    width: 15%;
-    margin-top: 1%;
-    margin-right: 1%;
-}
-
-#bt-excluir-primeiro{
-    width: 12%;
-    margin-top: 1%;
-    margin-right: 1%;
-}
-
-#bt-excluir-ultimo{
-    width: 20%;
-    margin-top: 1%;
-    margin-right: 1%;
-}
-
-#seta-primeira{
-    margin-left: 3vh;
-    width: 100%;
-}
-
-#seta-1-0{ /* 1 e ultima opção */
-    width: 100%;
-}
-
-#colocar-musica{
-    display: flex;
-    width: 70%;
-    height: 25vh;
-    background-color: aquamarine;
-    border: black;
-    border-style: solid;
-    border-radius: 30px;
-    margin-left: 5vh;
-}
-
-#form-msc{
-    margin-top: 2vh;
-    margin-left: 4vh;
-}
-
-#form-url-msc{
-    margin-top: 2vh;
-    margin-left: 4h;
-}
-
-#toda-as-musicas{
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    width: 63%;
-    height: 35vh;
-    background-color: aquamarine;
-    border: black;
-    border-style: solid;
-    border-radius: 30px;
-    margin-left: 5vh;
-
-}
-
-#testeteste{
-    display: flex;
-    flex-direction: column;
-}
-
-.img{  /* img dos bt, bt excluir, bt cima e bt baixo */
-    width: 100%;
 }

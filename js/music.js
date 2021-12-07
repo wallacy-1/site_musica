@@ -1,9 +1,10 @@
 //pick musics names
-let musicas = localStorage.getItem('musicas');
+let musicas = localStorage.getItem('musicas') === null ? "musicateste@/$" : localStorage.getItem('musicas');
 musicas = musicas.split("@/$");
 
-let mysong = document.getElementById("mysong");
+musicas.pop(); // remover ultimo elemento vazio
 
+const  audio = document.getElementById("audio");
 // usaremos dps
 let mscOrdem = 0; // ordem da musica baseado no array, começa do 0 
 let mscTamanho = musicas.length - 1;
@@ -18,26 +19,12 @@ function proxMusica() {
 
 function colocarNovaMsc() {
     song.src = "audio/" + musicas[mscOrdem] + ".mp3";
-    mysong.load();
-    mysong.play();
+    audio.load();
+    audio.play();
     // mudar img
     //document.getElementById("img-musica").src= mscfoto[mscOrdem];
     // nome da musica
     document.getElementById("nome-msc").innerHTML = '<p id="titulo-msc">' + musicas[mscOrdem] + '</p>';
-}
-
-function tempoMusica() {
-    let tempoMsc = mysong.currentTime;
-    setTimeout(tempoMusica, 100);
-    document.getElementById("progressBar").value = tempoMsc;
-    //loop, se a opcao loop estiver ativada e a musica acabou ent
-    if (document.getElementById("loop").checked == true && mysong.duration == tempoMsc) {
-        mysong.load();
-        mysong.play();
-    } else if (document.getElementById("loop").checked == false && mysong.duration == tempoMsc) {
-        proxMusica();
-        colocarNovaMsc();
-    }
 }
 
 document.querySelector("#voltar-musica").addEventListener("click", () => {
@@ -52,32 +39,18 @@ document.querySelector("#play-musica").addEventListener("click", () => {
     //document.getElementById("img-musica").src= musicas[mscOrdem] + ".png"; // colocar img da musica
     document.getElementById("nome-msc").innerHTML = '<p id="titulo-msc">' + musicas[mscOrdem] + '</p>'; // nome da musica
     let source = '<source id="song" src="audio/' + musicas[mscOrdem] + '.mp3" type="audio/mp3">';
-    document.getElementById("mysong").innerHTML = source;
+    document.getElementById("audio").innerHTML = source;
 
-    //valo max para a barra de progresso
-    mysong.onloadedmetadata = function () {
-        let tempoProgressBar = mysong.duration;
-        document.getElementById("progressBar").setAttribute('max', tempoProgressBar);
-    }
-    // agr rodar musica e o tempo para a barra de progresso
-    mysong.play();
-    tempoMusica();
+    // agr rodar musica
+    audio.play();
 
     // sair o play e aparecer o pausar
     document.getElementById("play-musica").style.display = "none";
     document.getElementById("stop-musica").style.display = "inline-block";
 })
 
-// progress bar position click
-document.getElementById('progressBar').addEventListener('click', function (e) {
-    var x = e.pageX - this.offsetLeft, // or e.offsetX (less support, though)
-    clickedValue = x * this.max / this.offsetWidth;
-    mysong.currentTime = clickedValue;
-    document.getElementById("progressBar").value = clickedValue;
-});
-
 document.querySelector("#stop-musica").addEventListener("click", () => {
-    mysong.pause();
+    audio.pause();
     document.getElementById("play-musica").style.display = "inline-block";
     document.getElementById("stop-musica").style.display = "none";
 })
@@ -91,5 +64,47 @@ document.querySelector("#avancar-musica").addEventListener("click", () => {
 document.querySelector("#volume-barra").addEventListener("input", () => {
     let volume = document.getElementById("volume-barra").value;
     volume = volume / 100;
-    mysong.volume = volume;
+    audio.volume = volume;
 });
+
+const start = document.querySelector('.start');
+const end = document.querySelector('.end');
+const progressBar = document.querySelector('.progress-bar');
+const now = document.querySelector('.now');
+
+function conversion(value) {
+    let minute = Math.floor(value / 60)
+    minute = minute.toString().length === 1 ? ('0' + minute) : minute
+    let second = Math.round(value % 60)
+    second = second.toString().length === 1 ? ('0' + second) : second
+    return `${minute}:${second}`
+}
+
+audio.onloadedmetadata = function () {  // end = tempo final, duração da musica ex: 7:00
+    end.innerHTML = conversion(audio.duration)
+    start.innerHTML = conversion(audio.currentTime) //start = onde a musica esta na duração ex 1:02
+}
+
+progressBar.addEventListener('click', function (event) { // ao clicar no progress bar 
+    let coordStart = this.getBoundingClientRect().left
+    let coordEnd = event.pageX
+    let p = (coordEnd - coordStart) / this.offsetWidth
+    now.style.width = p.toFixed(3) * 100 + '%'
+
+    audio.currentTime = p * audio.duration
+    audio.play()
+})
+
+setInterval(() => {
+    if (audio.currentTime == audio.duration){ // musica chegou no final ?
+        if (document.getElementById("loop").checked) { // o loop ta ativado ? se sim inicia a mesma musica dnv
+            audio.load();
+            audio.play();
+        } else {  // senao começar nova musica
+            proxMusica();
+            colocarNovaMsc();
+        }
+    }
+    start.innerHTML = conversion(audio.currentTime)
+    now.style.width = audio.currentTime / audio.duration.toFixed(3) * 100 + '%'
+}, 1000)
