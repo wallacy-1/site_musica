@@ -3,14 +3,15 @@
 Site para deixar rodando enquanto você joga ou programa.
 
 ### Por que criar o site se existe spotify ?
-Aprender novos comandos e me desafiar 
+Aprender novos comandos e me desafiar
 
 ### Futuro desse projeto
  ______________________________________________________________
-|1 - Adicionar música com apenas o link do youtube - sem data  |
-|2 - Melhorar o css - 24/12/2021 - em progresso                |
-|3 - Converter vídeos para áudio e vise versa- sem data        |
-|4 - Back end - 12/3/2021 - completo                           |
+|1 - adicionar, pausar, iniciar, avançar musica - concluido    |
+|2 - Novo Visual - concluido                                   |
+|3 - Animação css - em progresso                               |
+|4 - Converter vídeos para áudio e vise versa                  |
+|5 - adicionar música com apenas o link do youtube             |
 |______________________________________________________________|
 
 ## AVISO:
